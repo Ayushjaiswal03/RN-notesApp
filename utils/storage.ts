@@ -21,3 +21,13 @@ export async function load<T = any>(key: string): Promise<T | null> {
     throw err;
   }
 }
+
+
+export async function remove(key: string): Promise<void> {
+  try {
+    await AsyncStorage.removeItem(key);            
+  } catch (err) {
+    console.error("storage.remove error:", err);
+    throw err;
+  }
+}
