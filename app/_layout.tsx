@@ -1,37 +1,39 @@
 import React, { useEffect } from "react";
-import { Stack } from "expo-router";                //  stack wrapper
-import { StatusBar } from "expo-status-bar";       // mobile's status bar 
-import useAuthStore from "../store/authStore";     //  Zustand auth store
+import { Slot, useRouter, useRootNavigationState } from "expo-router";
+import { StatusBar } from "expo-status-bar";
 import { ActivityIndicator, View } from "react-native";
-import { useRouter } from "expo-router";
+import useAuthStore from "../store/authStore";
 
 
 export default function RootLayout() {
+  const router = useRouter();
+  const rootNavigationState = useRootNavigationState();
+
+  // Zustand store 
+  const loadUserFromStorage = useAuthStore((s) => s.loadUserFromStorage);
+  const user = useAuthStore((s) => s.user);
+  const loading = useAuthStore((s) => s.loading);
+
   
-  const loadUserFromStorage = useAuthStore((s) => s.loadUserFromStorage); // load persisted user
-  const user = useAuthStore((s) => s.user);                             // current user (or null)
-  const loading = useAuthStore((s) => s.loading);                       // loading flag
-  const router = useRouter();  
-
-
   useEffect(() => {
-    loadUserFromStorage(); // loads user into store (async)
+    loadUserFromStorage();
   }, [loadUserFromStorage]);
 
+  
   useEffect(() => {
-   
+    
+    if (!rootNavigationState) return;
+
     if (user) {
-     
       router.replace("/notes");
     } else {
       router.replace("/login");
     }
-  }, [user, router]);
-
+  }, [rootNavigationState, user, router]);
 
   if (loading) {
     return (
-      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+      <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
         <ActivityIndicator size="large" />
         <StatusBar style="auto" />
       </View>
@@ -40,14 +42,7 @@ export default function RootLayout() {
 
   return (
     <>
-      <Stack>
-        
-        <Stack.Screen name="index" options={{ headerShown: false }} />
-        <Stack.Screen name="login" options={{ headerShown: false }} />
-        <Stack.Screen name="signup" options={{ headerShown: false }} />
-        <Stack.Screen name="notes" options={{ headerShown: false }} />
-        
-      </Stack>
+      <Slot />
       <StatusBar style="auto" />
     </>
   );
