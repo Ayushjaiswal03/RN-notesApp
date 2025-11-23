@@ -1,9 +1,8 @@
-// app/create-note.tsx
 import React, { useState } from "react";
 import { View, Text, TextInput, TouchableOpacity, Image, StyleSheet } from "react-native";
 import { router } from "expo-router";
 import * as ImagePicker from "expo-image-picker";
-import useNotesStore from "../store/noteStore"; // noteStore uses addNote(userId, noteData)
+import useNotesStore from "../store/noteStore"; 
 import useAuthStore from "../store/authStore";
 
 export default function CreateNoteScreen() {

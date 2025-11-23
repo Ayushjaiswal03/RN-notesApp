@@ -1,4 +1,4 @@
-import {create} from "zustand";
+import { create } from "zustand";
 import { persist } from "zustand/middleware";            // optional middleware for persistence
 import { loginUser, registerUser, UserRecord } from "../service/authService";
 import { save, load, remove } from "../utils/storage";   // storage helpers
