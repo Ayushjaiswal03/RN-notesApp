@@ -1,50 +1,84 @@
-# Welcome to your Expo app 👋
+Notes App – React Native (Expo)
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A simple note-taking app built using React Native + Expo, featuring:
 
-## Get started
+User authentication
 
-1. Install dependencies
+Create, edit, delete notes
 
-   ```bash
-   npm install
-   ```
+Add images to notes
 
-2. Start the app
+Search + sort
 
-   ```bash
-   npx expo start
-   ```
+Local persistent storage (AsyncStorage)
 
-In the output, you'll find options to open the app in a
+Cross-platform (Android/iOS/Web)
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+🚀 Setup Instructions
+1. Clone the Repository
+git clone https://github.com/Ayushjaiswal03/RN-notesApp
+cd RN-notesApp
 
-## Get a fresh project
+2. Install Dependencies
+npm install
 
-When you're ready, run:
+3. Start the Project
+npx expo start
 
-```bash
-npm run reset-project
-```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+Expo Dev Tools will open automatically.
 
-## Learn more
+You can now run the app in:
 
-To learn more about developing your project with Expo, look at the following resources:
+📱 Android / iOS Device
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+Install Expo Go from App Store / Play Store
 
-## Join the community
+Scan the QR displayed in terminal or browser
 
-Join our community of developers creating universal apps.
+🌐 Run on Web
+npx expo start --web
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+📦 Libraries Used
+Library	Purpose
+expo-router	File-based navigation
+zustand	State management for auth + notes
+expo-image-picker	Pick images from device
+AsyncStorage	Local persistent storage
+react-native	Core UI framework
+expo	Build + runtime platform
+
+
+📱 Features
+✔ Authentication
+
+Local-storage–based login & registration.
+
+✔ Notes Management
+
+Create note
+
+Edit note
+
+Delete note
+
+Add image to notes
+
+Notes sorted by latest edited
+
+✔ Search & Sort
+
+Search by title/body
+
+Sort by title or last updated date
+
+⚠️ Known Issues / Limitations
+
+Expo Go sometimes times out on iPhone (common WiFi/network issue).
+
+All data is stored locally, no real backend.
+
+iOS standalone builds require a paid Apple Developer account.
+
+Image picker behaves differently on web because of browser sandboxing.
