@@ -124,7 +124,6 @@ export const useNotesStore = create<NotesState>((set, get) => ({
     }
   },
 
-  // clear notes in-memory (doesn't remove persisted storage)
   clear: () => set({ notes: [] }),
 }));
 
