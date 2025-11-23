@@ -1,8 +1,3 @@
-// app/notes.tsx
-// Notes list screen: shows current user's notes, with search & sort.
-// Allows navigation to create/edit (create/edit screens are not included in this set
-// but you can create them similarly to the patterns used earlier).
-
 import React, { useEffect, useMemo, useState } from "react";
 import { View, Text, FlatList, TouchableOpacity, StyleSheet, TextInput, Alert, Image } from "react-native";
 import { useRouter } from "expo-router";
@@ -32,7 +27,7 @@ export default function NotesScreen() {
     if (user) loadNotes(user.id);
   }, [user, loadNotes]);
 
-  // filter + sort notes derived from raw notes
+  // filter + sort notes 
   const displayed = useMemo(() => {
     const q = query.trim().toLowerCase();
     let filtered = notes.filter((n) => {
@@ -58,7 +53,7 @@ export default function NotesScreen() {
     return filtered;
   }, [notes, query, sortMode]);
 
-  // handle delete with confirmation
+  // handle delete 
   const handleDelete = async (noteId: string) => {
     Alert.alert("Delete", "Delete this note?", [
       { text: "Cancel", style: "cancel" },
@@ -100,7 +95,6 @@ export default function NotesScreen() {
     </TouchableOpacity>
   );
 
-  // early return if no user
   if (!user) {
     return (
       <View style={styles.center}>
@@ -111,7 +105,6 @@ export default function NotesScreen() {
 
   return (
     <View style={styles.container}>
-      {/* header with actions */}
       <View style={styles.header}>
         <Text style={styles.headerTitle}>Your Notes</Text>
         <View style={styles.headerButtons}>

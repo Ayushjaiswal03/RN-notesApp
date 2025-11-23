@@ -1,6 +1,3 @@
-// app/edit-note.tsx
-// Simple edit screen that loads note by id from notes store, allows editing & saving.
-
 import React, { useEffect, useState } from "react";
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image } from "react-native";
 import { useLocalSearchParams, useRouter } from "expo-router";
@@ -32,15 +29,14 @@ export default function EditNoteScreen() {
 
   const onSave = async () => {
     if (!user || !id) return;
-    // note shape requires id + timestamps are handled by store
     await updateNote(user.id, {
       id: id as string,
       title,
       body,
       imageUri,
-      createdAt: Date.now(),   // updateNote ignores createdAt but the type expects it; store uses existing createdAt
+      createdAt: Date.now(),   
       updatedAt: Date.now(),
-    } as any); // small type relaxation; store will copy fields and override updatedAt
+    } as any); 
     router.back();
   };
 
